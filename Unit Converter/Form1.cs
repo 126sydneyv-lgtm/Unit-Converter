@@ -12,37 +12,36 @@ namespace Unit_Converter
 {
     public partial class Form1 : Form
     {
-        int conversionChoice;
-        int value;
-       
+        int choice;
+        double value;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private double InchesToCm(double conversionValue)
+        double InchesToCm(double inches)
         {
-            if (conversionChoice == 1)
-            {
-                value = Convert.ToInt32(valueTextbox);
-                return conversionValue = value * 2.54;
-               
-            }
+            double cm = inches * 2.54;
+            return cm;
         }
 
-        private void FeetToCm()
+        double FeetToCm(double feet)
         {
-
+            double cm = feet * 30.48;
+            return cm;
         }
 
-        private void YardsToMetres()
+        double YardsToMetres(double yards)
         {
-
+            double metres = yards * 0.91;
+            return metres;
         }
 
-        private void MilesToKm()
+        double MilesToKm(double miles)
         {
-
+            double km = miles * 1.6;
+            return km;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -51,7 +50,38 @@ namespace Unit_Converter
 
         private void convertButton_Click(object sender, EventArgs e)
         {
-            conversionChoice = Convert.ToInt32(choiceTextbox);
+            choice = Convert.ToInt16(choiceTextbox.Text);
+            value = Convert.ToDouble(valueTextbox.Text);
+            double result = 0;
+            string unit;
+            string unit2;
+            if (choice == 1)
+            {
+                result = InchesToCm(value);
+                unit = "inches";
+                unit2 = "cm";
+            }
+            else if (choice == 2)
+            {
+                result = FeetToCm(value);
+                unit = "feet";
+                unit2 = "cm";
+            }
+            else if (choice == 3)
+            {
+                result = YardsToMetres(value);
+                unit = "yards";
+                unit2 = "metres";
+            }
+            else
+            {
+                result = MilesToKm(value);
+                unit = "miles";
+                unit2 = "km";
+            }
+
+            //display result
+            resultLabel.Text = "" + value + " " + unit + " = " + result.ToString("F2") + " " + unit2;
         }
     }
 }
