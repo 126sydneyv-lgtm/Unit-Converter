@@ -19,25 +19,25 @@ namespace Unit_Converter
         {
             InitializeComponent();
         }
-
+        //calculates inches to cm
         double InchesToCm(double inches)
         {
             double cm = inches * 2.54;
             return cm;
         }
-
+        //calculates feet to cm
         double FeetToCm(double feet)
         {
             double cm = feet * 30.48;
             return cm;
         }
-
+        //calculates yards to metres
         double YardsToMetres(double yards)
         {
             double metres = yards * 0.91;
             return metres;
         }
-
+        //calculates miles to km
         double MilesToKm(double miles)
         {
             double km = miles * 1.6;
@@ -55,6 +55,7 @@ namespace Unit_Converter
             double result = 0;
             string unit;
             string unit2;
+            //displays result depending on choice
             if (choice == 1)
             {
                 result = InchesToCm(value);
